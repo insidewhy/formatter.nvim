@@ -88,7 +88,7 @@ require("formatter").setup {
           args = {
             "--search-parent-directories",
             "--stdin-filepath",
-            util.escape_path(util.get_current_buffer_file_path()),
+            "$FILE_PATH",
             "--",
             "-",
           },
@@ -194,6 +194,8 @@ Each formatter configuration should return a table that consist of:
 
 - `exe`: the program you wish to run.
 - `args`: a table of arguments to pass (optional)
+  - `$FILE_PATH` will be replaced with the file path of the current buffer
+  - `$FILE_NAME` will be replaced with the file name of the current buffer
 - `stdin`: if it should use the standard input (optional)
 - `cwd` : the path to run the program from (optional)
 - `try_node_modules`: tries to run a formatter from locally install npm
